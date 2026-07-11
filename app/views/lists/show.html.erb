@@ -1,0 +1,9 @@
+<h2><%= @list.name%></h2>
+<% if @bookmarks.empty?%>
+  <p>There are no movies to display, start with adding a <%= link_to "new", new_list_bookmark_path(@list) %> one!</p>
+<% else %>
+  <% @bookmarks.each do |bookmark|%>
+    <%= bookmark.movie%>
+  <% end %>
+<% end %>
+<%= link_to "Go back to your lists", lists_path%>
