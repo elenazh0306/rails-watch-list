@@ -1,0 +1,42 @@
+.card-movie {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  width: 250px;
+
+
+  & > img {
+    height: auto;
+    width: 200px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+  }
+
+  h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  p {
+    font-size: 12px;
+    opacity: .7;
+    margin: 0;
+  }
+
+
+  .card-movie-infos {
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+
+    i {
+      color: rgb(217, 2, 2);
+    }
+
+  }
+}

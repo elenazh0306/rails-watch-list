@@ -1,10 +1,22 @@
-<h2> 🗒️ Your lists </h2>
-<% if @lists.empty?%>
-  <p>There are no lists to display, start with creating a <%= link_to "new", new_list_path%> one!</p>
-<% else %>
-  <% @lists.each do |list|%>
-    <%= list.name%> <%= link_to "More info", list_path(list)%>
-  <% end %>
-<% end %>
-<%= link_to "Create a new list", new_list_path %>
-<%= link_to "Go to all movies", movies_path %>
+<%= render "layouts/navbar" %>
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path("banner.jpg") %>')">
+  <h4>"Every adventure requires a first step."</h4>
+</div>
+<div class="background">
+  <div class="container-main">
+    <h2> 🗝️ Your lists ♥️</h2>
+    <% if @lists.empty?%>
+      <p>There are no lists to display, start with creating a <%= link_to "new", new_list_path%> one!</p>
+    <% else %>
+      <ul class="list-group">
+        <% @lists.each do |list|%>
+          <li class="list-group-item"><%= list.name%> <span><%= link_to "More info", list_path(list)%></span></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <div>
+      <%= link_to "Create a new list", new_list_path %> <br>
+      <%= link_to "Go to all movies", movies_path %>
+    </div>
+  </div>
+</div>

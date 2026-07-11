@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   get "movies", to: "movies#index"
 
   # bookmarks
-  delete "bookmarks/:id", to: "bookmarks#destroy"
+  delete "bookmarks/:id", to: "bookmarks#destroy", as: :bookmark
 
 end
