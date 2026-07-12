@@ -1,22 +1,39 @@
 <%= render "layouts/navbar" %>
 <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path("banner.jpg") %>')">
-  <h4>"Every adventure requires a first step."</h4>
+  <h4>“Cinema is a matter of what's in the frame and what's out”</h4>
+  <h6>― Martin Scorsese.</h6>
+</div>
+
+<div class="d-flex">
+<div class="side-image">
+  <%= image_tag "Paramount Theater_flipped.jpeg", class: "index-image" %>
 </div>
 <div class="background">
   <div class="container-main">
-    <h2> 🗝️ Your lists ♥️</h2>
+    <h2> 🎬 Your lists </h2>
     <% if @lists.empty?%>
       <p>There are no lists to display, start with creating a <%= link_to "new", new_list_path%> one!</p>
     <% else %>
       <ul class="list-group">
         <% @lists.each do |list|%>
-          <li class="list-group-item"><%= list.name%> <span><%= link_to "More info", list_path(list)%></span></li>
+          <li class="list-group-item text-light bg-dark border-0"> 🍿 <%= list.name%>
+          <span><%= link_to list_path(list), class: "link-offset-2 link-underline link-underline-opacity-0" do%>
+            <i class="fa-solid fa-circle-info"></i>
+            <% end %>
+            <%= link_to list_path(list), data: {turbo_method: :delete, turbo_confirm: "Remove the list?"}, class: "link-offset-2 link-underline link-underline-opacity-0" do%>
+              <i class="fa-solid fa-trash-can"></i>
+            <% end %>
+            </span></li>
         <% end %>
       </ul>
     <% end %>
-    <div>
-      <%= link_to "Create a new list", new_list_path %> <br>
-      <%= link_to "Go to all movies", movies_path %>
-    </div>
   </div>
+  <div >
+    <%= link_to "Go to all movies", movies_path, class:"link-offset-2 link-underline link-underline-opacity-0 text-light px-4" %>
+  </div>
+</div>
+<div class="side-image">
+  <%= image_tag "Paramount Theater.jpeg", class: "index-image"%>
+</div>
+
 </div>
