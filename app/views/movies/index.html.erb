@@ -1,5 +1,22 @@
-<h1>MOVIES</h1>
-<% @movies.each do |movie|%>
-  <%= movie.title%>
-<% end %>
-<%= link_to "Go back to your lists", lists_path%>
+<%= render "layouts/navbar" %>
+<div class="background-lists">
+  <div class="d-flex justify-content-between p-4">
+    <h2 class="text-light"> 🎞️ MOVIES </h2>
+  </div>
+  <div class="d-flex flex-wrap gap-3 m-2 p-4">
+    <% @movies.each do |movie|%>
+      <div class="card-movie">
+        <%= image_tag movie.poster_url%>
+        <div class="card-movie-infos">
+          <div>
+            <h2><%= movie.title%></h2>
+            <p><%= truncate(movie.overview, length: 80) %></p>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between px-3">
+
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,29 +1,35 @@
 <%= render "layouts/navbar" %>
-<h2><%= @list.name%></h2>
-<div class="d-flex flex-wrap gap-3 m-2">
-<% if @bookmarks.empty?%>
-  <p>There are no movies to display, start with adding a <%= link_to "new", new_list_bookmark_path(@list) %> one!</p>
-<% else %>
-  <% @bookmarks.each do |bookmark|%>
-    <div class="card-movie">
-      <%= image_tag bookmark.movie.poster_url%>
-      <div class="card-movie-infos">
-        <div>
-          <h2><%= bookmark.movie.title%></h2>
-          <p><%= truncate(bookmark.movie.overview, length: 80) %></p>
+<div class="background-lists">
+  <div class="d-flex justify-content-between p-4">
+    <h2 class="text-light"> 🎥 <%= @list.name%></h2>
+    <%= link_to "Add a new movie", new_list_bookmark_path(@list), class:"new" %>
+  </div>
+  <div class="d-flex flex-wrap gap-3 m-2 p-4">
+    <% if @bookmarks.empty?%>
+      <p class="text-light">There are no movies to display, start with adding a <%= link_to "new", new_list_bookmark_path(@list) %> one!</p>
+    <% else %>
+      <% @bookmarks.each do |bookmark|%>
+        <div class="card-movie">
+          <%= image_tag bookmark.movie.poster_url%>
+          <div class="card-movie-infos">
+            <div>
+              <h2><%= bookmark.movie.title%></h2>
+              <p><%= truncate(bookmark.movie.overview, length: 80) %></p>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between px-3">
+            <div >
+              ❝<%= bookmark.comment%>❞
+            </div>
+            <div>
+              <%= link_to bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
+                <i class="fa-solid fa-heart-crack"></i>
+              <% end %>
+            </div>
+          </div>
         </div>
-        <div>
-        ❝<%= bookmark.comment%>❞
-        </div>
-        <%= link_to bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Push it down the rabbit hole?"} do%>
-          <i class="fa-solid fa-heart-crack"></i>
-        <% end %>
+      <% end %>
 
-      </div>
-    </div>
-  <% end %>
-
-  <%= link_to "Add a new movie", new_list_bookmark_path(@list) %><br>
-<% end %>
+    <% end %>
+  </div>
 </div>
-<%= link_to "Go back to your lists", lists_path%>

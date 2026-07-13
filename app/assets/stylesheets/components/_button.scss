@@ -9,3 +9,32 @@
     background-color: black;
   }
 }
+
+.cancel {
+  background-color: rgb(181, 1, 1);
+  display: inline-block;
+  height: 35px;
+  border-radius: 5px;
+  color: white;
+  padding: 5px;
+  text-decoration: none;
+
+  &:hover {
+    background-color: black;
+  }
+}
+
+.new {
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  color: rgb(9, 9, 9);
+  height: 35px;
+  padding: 5px;
+  text-decoration: none;
+
+  &:hover {
+    background-color: rgb(200, 200, 200) ;
+
+  }
+}
