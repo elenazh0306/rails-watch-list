@@ -15,16 +15,29 @@
       <p>There are no lists to display, start with creating a <%= link_to "new", new_list_path%> one!</p>
     <% else %>
         <% @lists.each do |list|%>
-          <div class="card-list" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 200, crop: :fill %>')">
-            <%= list.name%>
-            <span><%= link_to list_path(list), class: "link-offset-2 link-underline link-underline-opacity-0" do%>
-              <i class="fa-solid fa-circle-info"></i>
-              <% end %>
-              <%= link_to list_path(list), data: {turbo_method: :delete, turbo_confirm: "Remove the list?"}, class: "link-offset-2 link-underline link-underline-opacity-0" do%>
-                <i class="fa-solid fa-trash-can"></i>
+          <% if list.photo.key.empty %>
+            <div class="card-list" >
+              <%= list.name%>
+              <span><%= link_to list_path(list), class: "link-offset-2 link-underline link-underline-opacity-0" do%>
+                <i class="fa-solid fa-circle-info"></i>
                 <% end %>
-                </span>
-          </div>
+                <%= link_to list_path(list), data: {turbo_method: :delete, turbo_confirm: "Remove the list?"}, class: "link-offset-2 link-underline link-underline-opacity-0" do%>
+                  <i class="fa-solid fa-trash-can"></i>
+                  <% end %>
+                  </span>
+            </div>
+          <% else %>
+            <div class="card-list" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 200, crop: :fill %>')">
+              <%= list.name%>
+              <span><%= link_to list_path(list), class: "link-offset-2 link-underline link-underline-opacity-0" do%>
+                <i class="fa-solid fa-circle-info"></i>
+                <% end %>
+                <%= link_to list_path(list), data: {turbo_method: :delete, turbo_confirm: "Remove the list?"}, class: "link-offset-2 link-underline link-underline-opacity-0" do%>
+                  <i class="fa-solid fa-trash-can"></i>
+                  <% end %>
+                  </span>
+            </div>
+          <% end %>
         <% end %>
     <% end %>
   </div>
