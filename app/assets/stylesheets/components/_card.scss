@@ -51,3 +51,25 @@
     color: rgb(217, 2, 2);
   }
 }
+
+.card-list {
+  background-size: cover;
+  background-position: center;
+  width: 280px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin: 8px;
+
+  i {
+    color: rgb(248, 249, 250);
+    font-size: 16px;
+  }
+}

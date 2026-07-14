@@ -12,10 +12,13 @@
   justify-content: space-between;
   padding-bottom: 50px;
   box-shadow: inset 2px 2px 15px rgba(248, 249, 250, 0.3);
+
+  overflow-y: auto;
 }
 
 .side-image {
   flex: 1;
+
 }
 
 .background-form {
