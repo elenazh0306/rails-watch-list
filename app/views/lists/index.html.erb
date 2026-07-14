@@ -15,7 +15,7 @@
       <p>There are no lists to display, start with creating a <%= link_to "new", new_list_path%> one!</p>
     <% else %>
         <% @lists.each do |list|%>
-          <% if list.photo.key.empty %>
+          <% if list.photo.attached? %>
             <div class="card-list" >
               <%= list.name%>
               <span><%= link_to list_path(list), class: "link-offset-2 link-underline link-underline-opacity-0" do%>
