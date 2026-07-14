@@ -2,6 +2,8 @@ require "json"
 require "open-uri"
 
 url = "https://tmdb.lewagon.com/movie/top_rated"
+puts "Cleaning database..."
+Movie.destroy_all
 
 data_serialized = URI.parse(url).read
 data = JSON.parse(data_serialized)
