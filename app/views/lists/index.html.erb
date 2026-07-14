@@ -16,14 +16,17 @@
     <% else %>
       <ul class="list-group">
         <% @lists.each do |list|%>
-          <li class="list-group-item text-light bg-transparent border-0"> 🍿 <%= list.name%>
-          <span><%= link_to list_path(list), class: "link-offset-2 link-underline link-underline-opacity-0" do%>
-            <i class="fa-solid fa-circle-info"></i>
-            <% end %>
-            <%= link_to list_path(list), data: {turbo_method: :delete, turbo_confirm: "Remove the list?"}, class: "link-offset-2 link-underline link-underline-opacity-0" do%>
-              <i class="fa-solid fa-trash-can"></i>
-            <% end %>
-            </span></li>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= list.photo.key%>')">
+
+            <li class="list-group-item text-light bg-transparent border-0"> 🍿 <%= list.name%>
+            <span><%= link_to list_path(list), class: "link-offset-2 link-underline link-underline-opacity-0" do%>
+              <i class="fa-solid fa-circle-info"></i>
+              <% end %>
+              <%= link_to list_path(list), data: {turbo_method: :delete, turbo_confirm: "Remove the list?"}, class: "link-offset-2 link-underline link-underline-opacity-0" do%>
+                <i class="fa-solid fa-trash-can"></i>
+                <% end %>
+                </span></li>
+          </div>
         <% end %>
       </ul>
     <% end %>
