@@ -15,7 +15,7 @@
       <p>There are no lists to display, start with creating a <%= link_to "new", new_list_path%> one!</p>
     <% else %>
         <% @lists.each do |list|%>
-          <div class="card-list" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= list.photo.key%>')">
+          <div class="card-list" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path(list.photo.key) %>')">
             <%= list.name%>
             <span><%= link_to list_path(list), class: "link-offset-2 link-underline link-underline-opacity-0" do%>
               <i class="fa-solid fa-circle-info"></i>
