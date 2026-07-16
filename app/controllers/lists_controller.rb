@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: [:show, :destroy]
+  before_action :set_list, only: [:show, :destroy, :edit, :update]
 
   def index
     @lists = List.all
@@ -19,6 +19,18 @@ class ListsController < ApplicationController
       redirect_to list_path(@list)
     else
       render :new, status: 422
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    @list.update(list_params)
+    if @list.save
+      redirect_to list_path(@list)
+    else
+      render :edit, status: 422
     end
   end
 

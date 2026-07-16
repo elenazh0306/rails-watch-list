@@ -1,0 +1,17 @@
+<div class="background-form">
+  <div class="container-main-form">
+    <h2>Edit the list</h2>
+    <%= simple_form_for(@list) do |f| %>
+      <div class="mb-3">
+      <%= f.input :name %>
+      </div>
+      <div class="mb-3">
+      <%= f.input :photo, as: :file %>
+      </div>
+      <div class="mb-3 d-flex justify-content-around align-items-center">
+      <%= f.submit "Save changes", class:"new"%>
+      <%= link_to "Cancel", lists_path, class:"cancel"%>
+      </div>
+    <% end %>
+  </div>
+</div>
