@@ -17,6 +17,24 @@ class BookmarksController < ApplicationController
     end
   end
 
+  def movienew
+    @lists = List.all
+    @movie = Movie.find(params[:movie_id])
+    @bookmark = Bookmark.new
+  end
+
+  def moviecreate
+    @movie = Movie.find(params[:movie_id])
+    @bookmark = Bookmark.new(bookmark_params)
+    @bookmark.movie = @movie
+    if @bookmark.save
+      redirect_to list_path([@bookmark.list, @bookmark])
+    else
+      @lists = List.all
+      render :movienew, status: 422
+    end
+  end
+
   def destroy
     @bookmark = Bookmark.find(params[:id])
     @bookmark.destroy
@@ -26,6 +44,6 @@ class BookmarksController < ApplicationController
   private
 
   def bookmark_params
-    params.require(:bookmark).permit(:comment, :movie_id)
+    params.require(:bookmark).permit(:comment, :movie_id, :list_id)
   end
 end

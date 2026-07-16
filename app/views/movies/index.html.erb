@@ -12,10 +12,14 @@
             <h2><%= movie.title%></h2>
             <p><%= truncate(movie.overview, length: 80) %></p>
           </div>
-        </div>
-        <div class="d-flex justify-content-between px-3">
+          <div class="d-flex justify-content-center px-3">
+            <%= link_to new_movie_bookmark_path(movie), class: "link-offset-2 link-underline link-underline-opacity-0" do %>
+              <i class="fa-solid fa-heart"></i>
+            <% end %>
+          </div>
 
         </div>
+
       </div>
     <% end %>
   </div>

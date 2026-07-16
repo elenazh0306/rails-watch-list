@@ -1,0 +1,14 @@
+<div class="background-form">
+  <div class="container-main-form">
+    <h2>Add <%= @movie.title%> to the list</h2>
+
+    <%= simple_form_for([@movie, @bookmark]) do |f| %>
+      <%= f.association :list, collection: @lists, prompt: "Choose a list" %>
+      <%= f.input :comment %>
+      <div class="mb-3 d-flex justify-content-around align-items-center">
+          <%= f.submit "Add a movie", class:"new"%>
+          <%= link_to "Cancel", lists_path, class:"cancel"%>
+          </div>
+    <% end %>
+  </div>
+</div>
